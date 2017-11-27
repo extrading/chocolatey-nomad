@@ -31,6 +31,9 @@ New-Item -ItemType directory -Path "$serviceConfigDirectory" -ErrorAction Silent
 # Unzip and move Nomad
 Get-ChocolateyUnzip  $sourcePath "$toolsPath"
 
+#Copy default configuration
+Copy-Item "$toolsPath/client.hcl" "$serviceConfigDirectory"
+
 # Create event log source
 # User -Force to avoid "A key at this path already exists" exception. Overwrite not an issue since key is not further modified
 $registryPath = 'HKLM:\SYSTEM\CurrentControlSet\services\eventlog\Application'

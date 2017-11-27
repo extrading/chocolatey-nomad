@@ -33,5 +33,6 @@ For example: `-params '-config-file="%PROGRAMDATA%\consul\dsc-config\default.jso
   <files>
     <file src="tools\**" target="tools" />
     <file src="binaries\**" target="binaries" />
+    <file src="configs\**" target="configs" />
   </files>
 </package>
