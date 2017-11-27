@@ -5,7 +5,7 @@ $toolsPath = (Split-Path -Parent $MyInvocation.MyCommand.Definition)
 $wrapperExe = "$env:ChocolateyInstall\bin\nssm.exe"
 $serviceInstallationDirectory = "$env:PROGRAMDATA\nomad"
 $serviceLogDirectory = "$serviceInstallationDirectory\logs"
-$serviceConfigDirectory = "$serviceInstallationDirectory\nomad.d"
+$serviceConfigDirectory = "$serviceInstallationDirectory\conf"
 $serviceDataDirectory = "$serviceInstallationDirectory\data"
 
 $packageParameters = $env:chocolateyPackageParameters
@@ -69,7 +69,7 @@ if ($service) {
 
 Write-Host "Installing service: $serviceName"
 # Install the service
-& $wrapperExe install $serviceName $(Join-Path $toolsPath "nomad.exe") "agent -ui -config-dir=$serviceConfigDirectory -data-dir=$serviceDataDirectory $packageParameters" | Out-Null
+& $wrapperExe install $serviceName $(Join-Path $toolsPath "nomad.exe") "-config=$serviceConfigDirectory/client.hcl $packageParameters" | Out-Null
 & $wrapperExe set $serviceName AppEnvironmentExtra GOMAXPROCS=$env:NUMBER_OF_PROCESSORS | Out-Null
 & $wrapperExe set $serviceName ObjectName NetworkService | Out-Null
 & $wrapperExe set $serviceName AppStdout "$serviceLogDirectory\nomad-output.log" | Out-Null
