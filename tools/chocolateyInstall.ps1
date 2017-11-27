@@ -5,8 +5,7 @@ $toolsPath = (Split-Path -Parent $MyInvocation.MyCommand.Definition)
 $wrapperExe = "$env:ChocolateyInstall\bin\nssm.exe"
 $serviceInstallationDirectory = "$env:PROGRAMDATA\nomad"
 $serviceLogDirectory = "$serviceInstallationDirectory\logs"
-$serviceConfigDirectory = "$serviceInstallationDirectory\configs"
-$serviceDataDirectory = "$serviceInstallationDirectory\data"
+$serviceConfigDirectory = "$serviceInstallationDirectory\conf"
 
 $packageParameters = $env:chocolateyPackageParameters
 if (-not ($packageParameters)) {
@@ -32,7 +31,7 @@ New-Item -ItemType directory -Path "$serviceConfigDirectory" -ErrorAction Silent
 Get-ChocolateyUnzip  $sourcePath "$toolsPath"
 
 #Copy default configuration
-Copy-Item "$toolsPath/client.hcl" "$serviceConfigDirectory"
+Copy-Item "$toolsPath/../configs/client.hcl" "$serviceConfigDirectory"
 
 # Create event log source
 # User -Force to avoid "A key at this path already exists" exception. Overwrite not an issue since key is not further modified
