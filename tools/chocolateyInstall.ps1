@@ -5,7 +5,7 @@ $toolsPath = (Split-Path -Parent $MyInvocation.MyCommand.Definition)
 $wrapperExe = "$env:ChocolateyInstall\bin\nssm.exe"
 $serviceInstallationDirectory = "$env:PROGRAMDATA\nomad"
 $serviceLogDirectory = "$serviceInstallationDirectory\logs"
-$serviceConfigDirectory = "$serviceInstallationDirectory\conf"
+$serviceConfigDirectory = "$serviceInstallationDirectory\configs"
 $serviceDataDirectory = "$serviceInstallationDirectory\data"
 
 $packageParameters = $env:chocolateyPackageParameters
