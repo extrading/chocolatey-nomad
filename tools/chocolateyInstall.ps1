@@ -6,6 +6,7 @@ $wrapperExe = "$env:ChocolateyInstall\bin\nssm.exe"
 $serviceInstallationDirectory = "$env:PROGRAMDATA\nomad"
 $serviceLogDirectory = "$serviceInstallationDirectory\logs"
 $serviceConfigDirectory = "$serviceInstallationDirectory\conf"
+$serviceDataDirectory = "$serviceInstallationDirectory\data"
 
 $packageParameters = $env:chocolateyPackageParameters
 if (-not ($packageParameters)) {
@@ -26,6 +27,8 @@ Write-Host "Creating $serviceLogDirectory"
 New-Item -ItemType directory -Path "$serviceLogDirectory" -ErrorAction SilentlyContinue | Out-Null
 Write-Host "Creating $serviceConfigDirectory"
 New-Item -ItemType directory -Path "$serviceConfigDirectory" -ErrorAction SilentlyContinue | Out-Null
+Write-Host "Creating $serviceDataDirectory"
+New-Item -ItemType directory -Path "$serviceDataDirectory" -ErrorAction SilentlyContinue | Out-Null
 
 # Unzip and move Nomad
 Get-ChocolateyUnzip  $sourcePath "$toolsPath"
@@ -71,7 +74,7 @@ if ($service) {
 
 Write-Host "Installing service: $serviceName"
 # Install the service
-& $wrapperExe install $serviceName $(Join-Path $toolsPath "nomad.exe") "-config=$serviceConfigDirectory/client.hcl $packageParameters" | Out-Null
+& $wrapperExe install $serviceName $(Join-Path $toolsPath "nomad.exe") "agent -config=$serviceConfigDirectory/client.hcl -data-dir=$serviceDataDirectory $packageParameters" | Out-Null
 & $wrapperExe set $serviceName AppEnvironmentExtra GOMAXPROCS=$env:NUMBER_OF_PROCESSORS | Out-Null
 & $wrapperExe set $serviceName ObjectName NetworkService | Out-Null
 & $wrapperExe set $serviceName AppStdout "$serviceLogDirectory\nomad-output.log" | Out-Null
