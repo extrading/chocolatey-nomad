@@ -1,12 +1,12 @@
 # chocolatey-consul
 
-[![Latest version released](https://img.shields.io/chocolatey/v/consul.svg)](https://chocolatey.org/packages/consul)
-[![Package downloads count](https://img.shields.io/chocolatey/dt/consul.svg)](https://chocolatey.org/packages/consul)
-[![Build status](https://ci.appveyor.com/api/projects/status/m3w9an4mxkg849fb?svg=true)](https://ci.appveyor.com/project/calvn/chocolatey-consul)
+[![Latest version released](https://img.shields.io/chocolatey/v/nomad.svg)](https://chocolatey.org/packages/nomad)
+[![Package downloads count](https://img.shields.io/chocolatey/dt/nomad.svg)](https://chocolatey.org/packages/nomad)
+[![Build status](https://ci.appveyor.com/api/projects/status/m3w9an4mxkg849fb?svg=true)](https://ci.appveyor.com/project/devblok/chocolatey-nomad/branch/master)
 
-Chocolatey package for [Consul](https://www.consul.io).
+Chocolatey package for [Nomad](https://www.nomadproject.io/).
 
-This package installs Consul as a service, using NSSM as the service wrapper.
+This package installs Nomad as a service, using NSSM as the service wrapper.
 
 ## Updating the package
 
