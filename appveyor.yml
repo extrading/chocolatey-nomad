@@ -1,8 +1,8 @@
 version: 0.8.0.{build}
 
-#environment:
-#  TOKEN:
-#    secure: 3sxpbbTFvPJlNQ7fwBDGM6EkuisTVEnALEK9Krtx5zAOvXdaIo+jCql4ms7cyFyj
+environment:
+  TOKEN:
+    secure: q0BlAHGaXBHcTnpUAPIpokRp12G6AsuiT3zBD3RZ7jUCuSziCYTvn4aYTrNzhNQ3
 
 platform:
   - x64
