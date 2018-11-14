@@ -1,4 +1,4 @@
-# chocolatey-consul
+# chocolatey-nomad
 
 [![Latest version released](https://img.shields.io/chocolatey/v/nomad.svg)](https://chocolatey.org/packages/nomad)
 [![Package downloads count](https://img.shields.io/chocolatey/dt/nomad.svg)](https://chocolatey.org/packages/nomad)
